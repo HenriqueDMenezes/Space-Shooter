@@ -1,6 +1,6 @@
 const suaNave = document.querySelector('.atirador');
 const playArea = document.querySelector('#main-play-area');
-
+const aliensImg = ['img/monster-1.png','img/monster-2.png','img/monster-3.png']
 
 //Movimento e tiro da nave
 function flyAhip(event){
@@ -71,7 +71,21 @@ function moveLaser(laser){
 
   },10);
 
-   
 }
 
+//função para criar os inimigos aleatórios. 
+function createAliens(){
+  let newAlien = document.createElement('img');
+  let alienSprite = aliensImg[Math.floor(math.random()*aliensImg.length)]//sorteio de imagens
+  newAlien.src = alienSprite;
+  newAlien.classList.add('alien');
+  newAlien.classList.add('alien-transition');
+  newAlien.style.left = '370px';
+  newAlien.style.top = `${Math.floor(math.random()*330) + 30}px`
+  playArea.appendChild(newAlien);
+  moveAlien(newAlien);
+}
+
+
 window.addEventListener('keydown',flyAhip)
+ 
